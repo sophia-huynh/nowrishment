@@ -1,0 +1,19 @@
+html, body {
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#wrapper {
+    width: 100%
+    padding-bottom: 62.5%;
+}
+
+#emulator {
+    background-color:#FFFFFF;
+    width:100%;
+    height:100%;
+}
