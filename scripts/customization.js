@@ -2,7 +2,7 @@ function Customization(){
     this.choices = []; // A list of choices
 }
 
-Customization.prototype.addChoice = funtion(choice){
+Customization.prototype.addChoice = function(choice){
     this.choices.push(choice);
 }
 
@@ -26,4 +26,19 @@ Customization.prototype.getPrice = function(){
         }
     }
     return total;
+}
+
+Customization.prototype.equals = function(customization){
+    for (choice in this.choices){
+        var found = false;
+        for (other in customization.choices){
+            if (choice.equals(other)){
+                found = true;
+            }
+        }
+        if (!found){
+            return false;
+        }
+    }
+    return true;
 }

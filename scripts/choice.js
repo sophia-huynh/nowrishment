@@ -13,3 +13,11 @@ Choice.prototype.makeCopy = function(){
     copy = new Choice(this.name, this.type, this.effect);
     return copy;
 }
+
+Choice.prototype.equals = function(other){
+    if (this.name == other.name && this.type == other.type
+        && this.value == other.value && this.effect == other.effect){
+        return true;
+    }
+    return false;
+}

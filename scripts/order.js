@@ -1,5 +1,6 @@
 function Order(){
     this.food = []; // A list of food
+    this.favourite = false;
 }
 
 Order.prototype.addFood = function(food){
@@ -13,4 +14,23 @@ Order.prototype.removeFood = function(id){
             return;
         }
     }
+}
+
+Order.prototype.toggleFavourite = function(){
+    this.favourite = !this.favourite;
+}
+
+Order.prototype.equals = function(order){
+    for (food in this.food){
+        var found = false;
+        for (other in order.food){
+            if (food.equals(other)){
+                found = true;
+            }
+        }
+        if (!found){
+            return false;
+        }
+    }
+    return true;
 }

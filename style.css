@@ -1,19 +1,99 @@
 html, body {
-    background-color: #000000;
+    background-color: #53535F;
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
     overflow: hidden;
+    min-width: 480px;
+    min-height:800px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 1.2em;
+    
+    cursor:default;
 }
 
-#wrapper {
-    width: 100%
-    padding-bottom: 62.5%;
+#emulator-area {
+    width: 80%;
+    height: 80%;
+}
+
+#emulator-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
 }
 
 #emulator {
-    background-color:#FFFFFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position:relative;
+}
+
+#navbar {
+    height: 70px;
+    width: 100%;
+    background-color: #2C2C2C;
+}
+
+#emulator-screen {
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+#footer {
+    width: 100%;
+    height: 70px;
+    background-color: #2C2C2C;
+    position:absolute;
+    bottom: 0px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#footer-back {
+    float: right;
+    margin: 20px;
+}
+
+#footer-menu {
+    float: left;
+    margin: 20px;
+}
+
+.clickable {
+    cursor:pointer;
+}
+
+#main-menu {
+    width: 100%;
+    height: 100%;
+}
+
+#search-bar {
     width:100%;
-    height:100%;
+    display:inline-block;
+}
+
+#restaurant-search {
+    margin-left:20px;
+    margin-top:40px;
+    height: 50px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    width:60%;
+}
+
+#search {
+    padding: 10px;
+    background-color: #CCC;
+    text-align: center;
+    display: inline-block;
+    float:right;
+    margin-left: 10px;
+    margin-top: 40px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
