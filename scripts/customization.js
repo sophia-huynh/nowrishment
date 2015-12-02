@@ -8,8 +8,9 @@ Customization.prototype.addChoice = function(choice){
 
 Customization.prototype.makeCopy = function(){
     copy = new Customization();
-    for (choice in choices){
-        copy.push(choice.makeCopy());
+    for (choice in this.choices){
+        var choice = this.choices[choice];
+        copy.addChoice(choice.makeCopy());
     }
     return copy;
 }
@@ -18,6 +19,7 @@ Customization.prototype.makeCopy = function(){
 Customization.prototype.getPrice = function(){
     var total = 0;
     for (choice in this.choices){
+        var choice = this.choices[choice];
         if (choice.type != COMBO){
             total += choice.effect(choice);
         } else {
@@ -32,6 +34,7 @@ Customization.prototype.equals = function(customization){
     for (choice in this.choices){
         var found = false;
         for (other in customization.choices){
+            var choice = customization.choices[other];
             if (choice.equals(other)){
                 found = true;
             }

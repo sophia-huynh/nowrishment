@@ -10,7 +10,7 @@ Choice.prototype.setValue = function(value){
 }
 
 Choice.prototype.makeCopy = function(){
-    copy = new Choice(this.name, this.type, this.effect);
+    var copy = new Choice(this.name, this.type, this.effect);
     return copy;
 }
 

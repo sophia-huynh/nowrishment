@@ -10,6 +10,7 @@ Combo.prototype.addFood = function(food){
 Combo.prototype.getPrice = function(){
     var total = base;
     for (food in this.food){
+        food = this.food[food];
         total += food.getPrice();
     }
     return total;

@@ -12,6 +12,7 @@ function generateID(){
 function getRestaurants(substring){
     returnList = [];
     for (restaurant in restaurants){
+        var restaurant = restaurants[restaurant];
         if (restaurant.name.indexOf(substring) != -1){
             returnList.push(restaurant);
         }
@@ -43,12 +44,12 @@ function makeBurgerCombo(additional){
 
         // Add a drink to the combo
         var d1 = new Food(generateID(), "Fountain Drink");
-        d1.addCustomization(cd);
+        d1.setCustomization(cd);
         combo.addFood(d1);
 
         // Add fries to the combo
         var s1 = new Food(generateID(), "French Fries");
-        s1.addCustomization(cs);
+        s1.setCustomization(cs);
         combo.addFood(s1);
 
         scope.value = combo;
@@ -58,8 +59,8 @@ function makeBurgerCombo(additional){
 
 function init(){
     // Set up McDonalds
-    var r1 = new Restaurant("McDonalds", "552 Yonge St.");
-    var r2 = new Restaurant("McDonalds", "344 Bathurst St.");
+    var r1 = new Restaurant("McDonalds", "552 Yonge St.", "images/mcdonalds.png");
+    var r2 = new Restaurant("McDonalds", "344 Bathurst St.", "images/mcdonalds.png");
     
     // Set up Burgers
     var c1 = new Category(generateID(), "Burgers");
@@ -90,13 +91,13 @@ function init(){
     var c2 = new Category(generateID(), "Drinks");
     var d1 = new Food(generateID(), "Fountain Drink");
     var d2 = new Food(generateID(), "Apple Juice");
-    d1.addCustomization(cd);
-    d2.addCustomization(cd);
+    d1.setCustomization(cd);
+    d2.setCustomization(cd);
 
     // Set up Sides
     var c3 = new Category(generateID(), "Sides");
     var s1 = new Food(generateID(), "French Fries");
-    s1.addCustomization(cs);
+    s1.setCustomization(cs);
 
     var menu = new Menu();
     menu.addCategory(c1);
@@ -110,4 +111,7 @@ function init(){
     restaurants.push(r1);
     restaurants.push(r2);
     //restaurants.push(r3);
+    
+    recentRestaurants.push(r1);
+    restaurants.push(r2);
 }

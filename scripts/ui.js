@@ -36,9 +36,21 @@ function resizeEmulator(){
     screen.height(wrapper.height() - 140);
 }
 
+
+function loadRecentRestaurants(){
+    for (var i = 0; i < 9; i++){
+        if (i < recentRestaurants.length)
+            $("#recent-restaurants").append(recentRestaurants[i].generateRecentListing());
+        else
+             $("#recent-restaurants").append(generateRecentListing());
+    }
+}
+
 function onPageLoad(){
     area = $("#emulator-area");
     wrapper = $("#emulator-wrapper");
     screen = $("#emulator-screen");
     resizeEmulator();
+    init();
+    loadRecentRestaurants();
 }

@@ -1,5 +1,6 @@
 <head>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/emulator.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/mainmenu.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="scripts/constants.js"></script>
     <script src="scripts/choice.js"></script>
@@ -25,10 +26,14 @@
             
             <!-- Define main body of emulator -->
             <div id="emulator-screen">
-                <div id="main-menu">
+                <!-- Main menu ("Search for a restaurant or select a restaurant -->
+                <div id="main-menu" class="screen">
                     <div id="search-bar">
-                        <input id="restaurant-search" type="text" placeholder="Search restaurant">
+                        <span class="instruction">Select a Restaurant</span>
+                        <input id="restaurant-search" type="text" placeholder="Search for a restaurant">
                         <div id="search" class="button clickable">Search</div>
+                    </div>
+                    <div id="recent-restaurants">
                     </div>
                 </div>
             

@@ -24,6 +24,7 @@ Order.prototype.equals = function(order){
     for (food in this.food){
         var found = false;
         for (other in order.food){
+            var other = order.food[other];
             if (food.equals(other)){
                 found = true;
             }

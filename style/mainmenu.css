@@ -1,0 +1,53 @@
+#main-menu {
+}
+
+#search-bar {
+    width:100%;
+    display:inline-block;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    text-align:center;
+    background-color:mediumseagreen;
+}
+
+#restaurant-search {
+    margin-left: 5%;
+    height: 50px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    width:60%;
+    padding: 2%;
+}
+
+#search {
+    display: inline-block;
+    float: right;
+    margin-right: 5%;
+    width: 20%;
+}
+
+#recent-restaurants {
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align:center;
+    vertical-align:top;
+}
+
+.recent-restaurant {
+    border-radius:10px;
+    background-color: #CCC;
+    width:100px;
+    height:100px;
+    overflow:hidden;
+    margin-bottom:5px;
+}
+
+.recent-restaurant-wrapper{
+    margin:3%;
+    width:100px;
+    font-size: .5em;
+    display: inline-block;
+    vertical-align:top;
+}
