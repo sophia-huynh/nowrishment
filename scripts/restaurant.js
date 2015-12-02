@@ -62,7 +62,8 @@ Restaurant.prototype.generateSearchResult = function(){
 }
 
 Restaurant.prototype.generateCategories = function(){
-    this.menu.generateCategories();
+    if (this.menu)
+        this.menu.generateCategories();
 }
 
 function generateRecentListing(icon, location, restaurant){

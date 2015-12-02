@@ -51,3 +51,25 @@
 .category img{
     width:100%;
 }
+
+#restaurant-category-food {
+    display:none;
+    text-align:center;
+    vertical-align:top;
+    background-color:white;
+    width:100%;
+}
+
+.full-screen {
+    width: 90%;
+    height: 95%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    overflow: auto;
+}
+
+#restaurant-food-listings {
+}
+

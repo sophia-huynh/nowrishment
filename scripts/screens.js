@@ -28,6 +28,8 @@ function clickHandler(e){
         // A restaurant was selected
         addRecentRestaurant(data);
         openRestaurant(data);
+    } else if (id.startsWith("cg")){
+        openCategory(data);
     }
 }
 
@@ -55,8 +57,22 @@ function openRestaurant(restaurant){
 }
 
 function openCategories(){
+    $("#restaurant-categories").empty();
     $("#restaurant-category-menu").show();
     $("#navbar-cart").show();
     selectedRestaurant.generateHeader();
     selectedRestaurant.generateCategories();
+}
+
+function openCategory(category){
+    $("#restaurant-food-listings").empty();
+    $("#restaurant-category-food").show();
+    category.generateFoodListings();
+}
+
+function foodCustomization(food){
+    createdFood = food;
+    $("#restaurant-food-customizations").empty();
+    $("#restaurant-food-screen").show();
+    createdFood.generateCustomizations();
 }

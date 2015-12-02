@@ -1,6 +1,7 @@
-function Food(id, name, cost){
+function Food(id, name, icon, cost){
     this.id = id;
     this.name = name;
+    this.icon = icon;
     this.cost = cost;
     this.customization = null;
 }
@@ -28,4 +29,19 @@ Food.prototype.equals = function(other){
         return true;
     }
     return false;
+}
+
+Food.prototype.generateListing = function(){
+    var listing;
+    var id = "fd" +  this.id;
+    listing = "<div class='food-wrapper'>\
+                        <div id='" + id + "' class='food-listing clickable'>\
+                            <img src='" + this.icon + "'>\
+                        </div>\
+                        " + this.name + "\
+                    </div>";
+                        
+    listing = $($.parseHTML(listing));
+    $("#restaurant-food-listings").append(listing);
+    $("#" + id).data({'data' : this});
 }
