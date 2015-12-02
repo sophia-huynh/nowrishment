@@ -45,3 +45,10 @@ Food.prototype.generateListing = function(){
     $("#restaurant-food-listings").append(listing);
     $("#" + id).data({'data' : this});
 }
+
+Food.prototype.generateCustomizations = function(){
+    for (i in this.customization){
+        this.customization[i].generateCustomization();
+    }
+}
+

@@ -45,3 +45,9 @@ Customization.prototype.equals = function(customization){
     }
     return true;
 }
+
+Customization.prototype.generateCustomization = function(){
+    for (i in this.choices){
+        this.choices[i].generateChoice();
+    }
+}

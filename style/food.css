@@ -17,5 +17,30 @@
 }
 
 .food-listing img{
-    width:100%;
+    width: 100%;
+}
+
+#restaurant-food-screen {
+    display: none;
+    background-color: white;
+    overflow:hidden;
+    text-align:center;
+}
+
+#restaurant-food-customization {
+    height: auto;
+}
+
+.customization-option {
+    width:80%;
+    text-align:left;
+    display:inline-block;
+    border-bottom: 1px solid #A5B7AD;
+    padding-top:2%;
+    padding-bottom:2%;
+}
+
+#add-order {
+    display:inline-block;
+    width:80%;
 }

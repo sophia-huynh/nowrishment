@@ -30,6 +30,8 @@ function clickHandler(e){
         openRestaurant(data);
     } else if (id.startsWith("cg")){
         openCategory(data);
+    } else if (id.startsWith("fd")){
+        openCustomization(data);
     }
 }
 
@@ -70,7 +72,7 @@ function openCategory(category){
     category.generateFoodListings();
 }
 
-function foodCustomization(food){
+function openCustomization(food){
     createdFood = food;
     $("#restaurant-food-customizations").empty();
     $("#restaurant-food-screen").show();
