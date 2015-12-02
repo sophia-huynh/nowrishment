@@ -38,9 +38,25 @@ html, body {
     background-color: #2C2C2C;
 }
 
+#navbar-header {
+    float: left;
+    margin: 20px;
+    color:white;
+    font-weight: bold;
+}
+
+#navbar-cart {
+    float: right;
+    margin: 20px;
+    color:white;
+    font-weight: bold;
+    display: none;
+}
+
 #emulator-screen {
     width: 100%;
     background-color: #FFFFFF;
+    position: relative;
 }
 
 #footer {
@@ -69,7 +85,9 @@ html, body {
 
 .screen {
     width: 100%;
-    min-height:100%;
+    height:100%;
+    position: absolute;
+    top: 0;
 }
 
 .instruction {

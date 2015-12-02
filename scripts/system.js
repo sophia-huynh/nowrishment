@@ -9,11 +9,23 @@ function generateID(){
     return lastID;
 }
 
+function addRecentRestaurant(restaurant){
+    // Go through the list of recent restaurants.
+    // If the name and location matches one, return
+    for (i in recentRestaurants){
+        var r = recentRestaurants[i];
+        if (r.name == restaurant.name && r.location == restaurant.location)
+            return;
+    }
+    recentRestaurants.push(restaurant);
+}
+
 function getRestaurants(substring){
     returnList = [];
+    substring = substring.toLowerCase();
     for (restaurant in restaurants){
         var restaurant = restaurants[restaurant];
-        if (restaurant.name.indexOf(substring) != -1){
+        if (restaurant.name.toLowerCase().indexOf(substring) != -1){
             returnList.push(restaurant);
         }
     }
@@ -112,6 +124,5 @@ function init(){
     restaurants.push(r2);
     //restaurants.push(r3);
     
-    recentRestaurants.push(r1);
-    restaurants.push(r2);
+    addRecentRestaurant(r1);
 }

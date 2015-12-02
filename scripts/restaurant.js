@@ -39,24 +39,49 @@ Restaurant.prototype.getOrders = function(){
     return favourites.concat(notFavourites);
 }
 
+Restaurant.prototype.generateHeader = function(){
+    var header = "<span class='restaurant-menu-name'>" + this.name + "</span><br/>\
+                  <span class='restaurant-menu-location'> " + this.location +"</span>";
+    $("#restaurant-header").empty().append(header);
+}
+
+Restaurant.prototype.generateRecentListing = function(){
+    return generateRecentListing(this.icon, this.location, this);
+}
+
+Restaurant.prototype.generateSearchResult = function(){
+    var id = "sr" + generateID();
+    var result = "<div class='search-result clickable' id='" + id + "'>\
+                      <img src='" + this.icon +"'>\
+                      <div class='restaurant-name'>" + this.name + "</div>\
+                      <div class='restaurant-location'>" + this.location + "</div>\
+                  </div>";
+    result = $($.parseHTML(result));
+    $("#search-results").append(result);
+    $("#" + id).data({'data' : this});
+}
+
+Restaurant.prototype.generateCategories = function(){
+    this.menu.generateCategories();
+}
+
 function generateRecentListing(icon, location, restaurant){
     var listing;
+    var id = "rr" +  generateID();
     if (restaurant){
         listing = "<div class='recent-restaurant-wrapper'>\
-                            <div class='recent-restaurant clickable'>\
+                            <div id='" + id + "' class='recent-restaurant clickable'>\
                                 <img src='" + icon + "'>\
                             </div>\
                             " + location + "\
                         </div>";
     } else {
         listing = "<div class='recent-restaurant-wrapper'>\
-                            <div class='recent-restaurant'>\
+                            <div id='" + id + "' class='recent-restaurant'>\
                             </div>\
                         </div>";
     }
-    return listing;
-}
-
-Restaurant.prototype.generateRecentListing = function(){
-    return generateRecentListing(this.icon, this.location, this);
+    listing = $($.parseHTML(listing));
+    $("#recent-restaurants").append(listing);
+    $("#" + id).data({'data' : restaurant});
 }

@@ -34,16 +34,24 @@ function resizeEmulator(){
     
     // Adjust screen
     screen.height(wrapper.height() - 140);
+
+    // Adjust main-menu heights
+    var padding = parseInt($("#recent-restaurants").css("padding-bottom"));
+    $(".under-search").height($("#main-menu").height() - $("#search-bar").outerHeight() - padding);
 }
 
 
 function loadRecentRestaurants(){
     for (var i = 0; i < 9; i++){
         if (i < recentRestaurants.length)
-            $("#recent-restaurants").append(recentRestaurants[i].generateRecentListing());
+            recentRestaurants[i].generateRecentListing();
         else
-             $("#recent-restaurants").append(generateRecentListing());
+            generateRecentListing();
     }
+}
+
+function visible(element){
+    return element.is(':visible');
 }
 
 function onPageLoad(){
@@ -53,4 +61,6 @@ function onPageLoad(){
     resizeEmulator();
     init();
     loadRecentRestaurants();
+
+    $(document).on('click', ".clickable", function(e){clickHandler(e);});
 }
