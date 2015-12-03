@@ -1,0 +1,19 @@
+#view-QR-code{
+    display:none;
+    text-align: center;
+    background-color: #E9FFE9
+}
+
+#view-QR-code img {
+    width:60%;
+    margin:10% 10% 2%;
+}
+
+#payment-warning {
+    width: 80%;
+    font-size: 0.8em;
+    text-align:center;
+    display:inline-block;
+    font-weight:bold;
+    color:#316F46;
+}

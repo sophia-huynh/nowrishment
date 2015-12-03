@@ -105,3 +105,18 @@ html, body {
     color: #CDF3CB;
     text-align: center;
 }
+
+#order-amount {
+    position: absolute;
+    right: 0px;
+    margin-right: 1%;
+    margin-top: 1%;
+    border-radius: 1em;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 0.8em;
+    color: white;
+    background-color: #3CB371;
+    pointer-events:none;
+    display:none;
+}

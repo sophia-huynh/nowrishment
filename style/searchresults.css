@@ -37,3 +37,8 @@
     width: 5%;
     float:right;
 }
+
+.number {
+    font-size: 1em;
+    width: 15%;
+}

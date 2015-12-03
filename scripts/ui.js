@@ -38,6 +38,8 @@ function resizeEmulator(){
     // Adjust main-menu heights
     var padding = parseInt($("#recent-restaurants").css("padding-bottom"));
     $(".under-search").height($("#main-menu").height() - $("#search-bar").outerHeight() - padding);
+    
+    $("#view-order-type").css({'line-height':screen.height()+'px'});
 }
 
 
@@ -48,6 +50,34 @@ function loadRecentRestaurants(){
         else
             generateRecentListing();
     }
+}
+
+function displayCombo(){
+}
+
+function hideCombo(){
+}
+
+function updatePrice(food){
+    $("#customization-total-price").html(food.getPrice().toFixed(2));
+}
+
+function updateChoice(e){
+    var element = $(e.target).closest(".choice-input");
+    var id = element.attr("id");
+    var data = element.data("data");
+    var newValue;
+    
+    if (data.type == NUMBER){
+        newValue = $("#"+id).val();
+    } else if (data.type == BOOLEAN){
+        newValue = $("#"+id).prop('checked');
+    } else if (data.type == COMBO){
+        newValue = $("#"+id).prop('checked');
+    }
+    data.setValue(newValue);
+    data.updateChoice();
+    updatePrice(createdFood);
 }
 
 function visible(element){
@@ -63,4 +93,14 @@ function onPageLoad(){
     loadRecentRestaurants();
 
     $(document).on('click', ".clickable", function(e){clickHandler(e);});
+    $(document).on('click', ".combo", function(e) {
+        if(this.checked){
+            displayCombo();
+        } else {
+            hideCombo();
+        }
+    });
+    
+    $(document).on('click', '.choice-input', function(e){updateChoice(e);});
+    $("#view-order-screen").css({right:-area.width()});
 }

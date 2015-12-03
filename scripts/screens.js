@@ -20,6 +20,19 @@ function clickHandler(e){
             return;
         case "navbar-cart":
             // Toggle the view of the current order
+            toggleCart();
+            return;
+        case "add-order":
+            addToOrder(createdFood);
+            return;
+        case "submit-order":
+            openPaymentScreen();
+            return;
+        case "order-type-now":
+            openQRScreenNow();
+            return;
+        case "order-type-later":
+            openQRScreenLater();
             return;
     }
 
@@ -35,7 +48,29 @@ function clickHandler(e){
     }
 }
 
+function openQRScreenNow(){
+    $("#view-QR-code").show();
+    $("#payment-warning").html("Your order has been placed!<br><br>Scan this QR code at the cashier to pick up your order.");
+}
+
+function openQRScreenLater(){
+    $("#view-QR-code").show();
+    $("#payment-warning").html("Scan this QR code at the cashier to place your order.<br><br>Your order will be processed after payment is received. You may revise your order at any time before payment.");
+}
+
+function openPaymentScreen(){
+    toggleCart();
+    $("#view-order-type").show();
+}
+
 function toggleCart(){
+    if (!orderVisible){
+        $("#view-order-screen").animate({right:'0'});
+    } else {
+        var width = area.width();
+        $("#view-order-screen").animate({right:-width});
+    }
+    orderVisible = !orderVisible;
 }
 
 function openSearchResults(string){
@@ -62,6 +97,8 @@ function openCategories(){
     $("#restaurant-categories").empty();
     $("#restaurant-category-menu").show();
     $("#navbar-cart").show();
+    $("#order-amount").show();
+    updateOrderAmount();
     selectedRestaurant.generateHeader();
     selectedRestaurant.generateCategories();
 }
@@ -77,4 +114,5 @@ function openCustomization(food){
     $("#restaurant-food-customizations").empty();
     $("#restaurant-food-screen").show();
     createdFood.generateCustomizations();
+    $("#customization-total-price").html(food.getPrice().toFixed(2));
 }

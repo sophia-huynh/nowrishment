@@ -3,6 +3,14 @@ function Order(){
     this.favourite = false;
 }
 
+Order.prototype.getTotalPrice = function(){
+    var totalPrice = 0;
+    for (i in this.food){
+        totalPrice += this.food[i].getPrice();
+    }
+    return totalPrice;
+}
+
 Order.prototype.addFood = function(food){
     this.food.push(food);
 }
@@ -34,4 +42,29 @@ Order.prototype.equals = function(order){
         }
     }
     return true;
+}
+
+Order.prototype.updateOrderDetails = function(){
+    $("#order-listing").empty();
+    for (i in this.food){
+        var listing = this.food[i].generateOrderListing();
+    }
+}
+
+function addToOrder(food){
+    user.order.addFood(food);
+    $("#restaurant-food-screen").hide();
+    $("#restaurant-food-customization").empty();
+    $("#restaurant-category-food").hide();
+    updateOrderAmount();
+}
+
+function updateOrderAmount(){
+    $("#order-amount").html(user.order.food.length);
+    updateOrder();
+}
+
+function updateOrder(){
+    $("#order-total-price").html(user.order.getTotalPrice().toFixed(2));
+    user.order.updateOrderDetails();
 }

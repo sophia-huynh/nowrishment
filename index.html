@@ -4,6 +4,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style/searchresults.css">
     <link rel="stylesheet" type="text/css" media="screen" href="style/restaurant.css">
     <link rel="stylesheet" type="text/css" media="screen" href="style/food.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/order.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/qr.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="scripts/constants.js"></script>
     <script src="scripts/choice.js"></script>
@@ -27,7 +29,8 @@
             <!-- Define navbar of emulator -->
             <div id="navbar">
                 <div id="navbar-header">Team Chick-Fil-A</div>
-                <div id="navbar-cart" class="clickable">View Order</div>
+                <div id="navbar-cart" class="clickable">Your Order</div>
+                <div id="order-amount">0</div>
             </div>
             
             <!-- Define main body of emulator -->
@@ -74,9 +77,29 @@
                 <div id="restaurant-food-screen" class="screen">
                     <div id="restaurant-food-customization" class="full-screen">
                     </div>
+                    <div id="customization-price-wrapper">Total Price: $<span id="customization-total-price"></span></div>
                     <div id="add-order" class="button clickable">
                         Add to Order
                     </div>
+                </div>
+                
+                <!-- Order now/later -->
+                <div id="view-order-type" class="screen">
+                    <div id="order-type-now" class="bigbutton clickable">Order Now <div class='subtext'>Pay using Debit or Credit</div></div>
+                    <div id="order-type-later" class="bigbutton clickable">Order in Restaurant <div class='subtext'>Pay at the Cashier</div></div>
+                </div>
+                
+                <!-- QR code -->
+                <div id="view-QR-code" class="screen">
+                    <img src="images/qrcode.png">
+                    <div id="payment-warning">Your order will be processed after payment is received. You may revise your order at any time before payment.</div>
+                </div>
+                
+                <!-- Order/Cart -->
+                <div id="view-order-screen" class="screen">
+                    <div id="order-listing"></div>
+                    <div id="order-price-wrapper">Total $<span id="order-total-price"></span></div>
+                    <div id="submit-order" class="clickable button">Place Order</div>
                 </div>
             </div>
         

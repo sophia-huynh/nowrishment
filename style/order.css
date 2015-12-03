@@ -1,0 +1,105 @@
+#view-order-screen {
+    background-color: #F7FFF7;
+    border-left:1px solid #C2D1C1;
+}
+
+#order-listing {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 4%;
+}
+
+#order-price-wrapper {
+    display: inline-block;
+    text-align: right;
+    width: 90%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
+    margin-top: -4%;
+}
+
+#order-total-price {
+}
+
+#submit-order {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+.food-order-listing {
+    background-color:#3CB371;
+    color: white;
+    width:100%;
+    border-radius: 10px;
+    display:inline-block;
+    padding: 2%;
+    margin: -2% -2% 2.5%;
+    position: relative;
+}
+
+.food-order-item {
+    width:80%;
+    display:inline-block;
+    font-weight:bold;
+}
+
+.food-order-cost {
+    text-align: right;
+    display:inline-block;
+    width:18%;
+    font-weight:bold;
+}
+.customization-order-listing {
+    width: 80%;
+    margin-left: 10%;
+    font-size: 1.0em;
+    color: #E9FFE9;
+    display:inline-block;
+}
+
+.customization-order-cost {
+    text-align: right;
+    display:inline-block;
+    width:18%;
+    font-size: 1.0em;
+}
+
+#view-order-type {
+    vertical-align:middle;
+    display: inline-block;
+    text-align: center;
+    background-color:#E9FFE9;
+    display: none;
+}
+
+.bigbutton {
+    line-height: initial;
+    width: 35%;
+    padding:2%;
+    display: inline-block;
+    border-radius:10px;
+    
+    background-color:seagreen;
+    color: #E9FFE9;
+    font-weight:bold;
+    vertical-align: middle;
+}
+
+#order-type-now {
+    margin-right:5%;
+}
+
+#order-type-later {
+    margin-left:5%;
+}
+
+.subtext {
+    width: 100%;
+    display:inline-block;
+    font-size: 0.8em;
+    font-weight: initial;
+}

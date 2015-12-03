@@ -4,6 +4,8 @@ var restaurants = [];
 var recentRestaurants = [];
 var selectedRestaurant = null;
 var createdFood = null;
+var edit = false;
+var orderVisible = false;
 
 function generateID(){
     lastID += 1;
@@ -56,16 +58,18 @@ function makeBurgerCombo(additional){
 
 
         // Add a drink to the combo
-        var d1 = new Food(generateID(), "Fountain Drink");
+        var d1 = new Food(generateID(), "Fountain Drink", "images/drink.png", 0);
         d1.setCustomization(cd);
         combo.addFood(d1);
 
         // Add fries to the combo
-        var s1 = new Food(generateID(), "French Fries");
+        var s1 = new Food(generateID(), "French Fries", "images/fries.png", 0);
         s1.setCustomization(cs);
         combo.addFood(s1);
 
         scope.value = combo;
+        
+        return additional;
     }
     return lambda;
 }
@@ -81,7 +85,7 @@ function init(){
     var f2 = new Food(generateID(), "Big Mac", "images/burger.png", 4.75);
     var cb = new Customization();
 
-    var ch1 = new Choice("Number of Patties", NUMBER, scalePrice(1));
+    var ch1 = new Choice("Additional Patties", NUMBER, scalePrice(1));
     var ch2 = new Choice("Remove Ketchup", BOOLEAN, scalePrice(0));
     var ch5 = new Choice("Make Combo", COMBO, makeBurgerCombo(2.25));
 
@@ -89,7 +93,7 @@ function init(){
     cb.addChoice(ch2);
     cb.addChoice(ch5);
     f1.setCustomization(cb);
-    f2.setCustomization(cb);
+    f2.setCustomization(cb.makeCopy());
     c1.addFood(f1);
     c1.addFood(f2);
 
@@ -107,7 +111,7 @@ function init(){
     var d1 = new Food(generateID(), "Fountain Drink", "images/drink.png", 1.25);
     var d2 = new Food(generateID(), "McCafe", "images/coffee.png", 1.50);
     d1.setCustomization(cd);
-    d2.setCustomization(cd);
+    d2.setCustomization(cs.makeCopy());
     c2.addFood(d1);
     c2.addFood(d2);
 

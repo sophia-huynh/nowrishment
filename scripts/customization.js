@@ -23,8 +23,9 @@ Customization.prototype.getPrice = function(){
         if (choice.type != COMBO){
             total += choice.effect(choice);
         } else {
-            if (choice.value)
-                total += choice.value.getPrice;
+            if (choice.value){
+                total += choice.value.getPrice();
+            }
         }
     }
     return total;
@@ -50,4 +51,12 @@ Customization.prototype.generateCustomization = function(){
     for (i in this.choices){
         this.choices[i].generateChoice();
     }
+}
+
+Customization.prototype.generateOrderListing = function(){
+    var listing = "";
+    for (i in this.choices){
+        listing += this.choices[i].generateListing();
+    }
+    return listing;
 }

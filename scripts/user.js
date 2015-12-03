@@ -1,6 +1,6 @@
 function User(){
-    this.favourites = null;
-    this.order = null;
+    this.favourites = new Favourites();
+    this.order = new Order();
 }
 
 User.prototype.setOrder = function(order){

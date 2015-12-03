@@ -38,7 +38,7 @@ Food.prototype.generateListing = function(){
                         <div id='" + id + "' class='food-listing clickable'>\
                             <img src='" + this.icon + "'>\
                         </div>\
-                        " + this.name + "\
+                        " + this.name + " ($" + this.cost.toFixed(2) + ")\
                     </div>";
                         
     listing = $($.parseHTML(listing));
@@ -46,9 +46,24 @@ Food.prototype.generateListing = function(){
     $("#" + id).data({'data' : this});
 }
 
+Food.prototype.generateOrderListing = function(){
+    var listing = "<div class='food-order-listing clickable' id='fr" + this.id + "'>\
+                        <div class='food-order-item'>" + this.name + "</div>\
+                        <div class='food-order-cost'>$" + this.getPrice().toFixed(2) + "</div>\
+                    ";
+    if (this.customization)
+        listing += this.customization.generateOrderListing();
+    listing += "</div>";
+    
+    $("#order-listing").append(listing);
+    $("#fr" + this.id).data({'data' : this});
+}
+
 Food.prototype.generateCustomizations = function(){
-    for (i in this.customization){
-        this.customization[i].generateCustomization();
+    if (!edit){
+        this.customization = this.customization.makeCopy();
     }
+    if (this.customization)
+        this.customization.generateCustomization();
 }
 
