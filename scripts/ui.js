@@ -40,6 +40,7 @@ function resizeEmulator(){
     $(".under-search").height($("#main-menu").height() - $("#search-bar").outerHeight() - padding);
     
     $("#view-order-type").css({'line-height':screen.height()+'px'});
+    $("#select-order-start").css({'line-height':screen.height()+'px'});
 }
 
 
@@ -101,6 +102,8 @@ function onPageLoad(){
         }
     });
     
-    $(document).on('click', '.choice-input', function(e){updateChoice(e);});
+    $(document).on('mouseup', '.choice-input.number', function(e){updateChoice(e);});
+    $(document).on('click', '.choice-input.combo', function(e){updateChoice(e);});
+    $(document).on('click', '.choice-input.boolean', function(e){updateChoice(e);});
     $("#view-order-screen").css({right:-area.width()});
 }

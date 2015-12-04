@@ -42,7 +42,7 @@
 }
 
 .food-order-item {
-    width:80%;
+    width:70%;
     display:inline-block;
     font-weight:bold;
 }
@@ -50,7 +50,7 @@
 .food-order-cost {
     text-align: right;
     display:inline-block;
-    width:18%;
+    width:28%;
     font-weight:bold;
 }
 .customization-order-listing {

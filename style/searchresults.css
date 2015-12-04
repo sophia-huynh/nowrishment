@@ -42,3 +42,19 @@
     font-size: 1em;
     width: 15%;
 }
+
+#select-order-start {
+    vertical-align:middle;
+    display: inline-block;
+    text-align: center;
+    background-color:#E9FFE9;
+    display:none;
+}
+
+#select-old-order {
+    margin-right:5%;
+}
+
+#select-new-order {
+    margin-left:5%;
+}

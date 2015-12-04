@@ -34,13 +34,20 @@ function clickHandler(e){
         case "order-type-later":
             openQRScreenLater();
             return;
+        case "select-old-order":
+            selectOldOrder();
+            return;
+        case "select-new-order":
+            openRestaurant(selectedRestaurant);
+            return;
     }
 
     // At this point, all of the above cases failed, so it's something else!
     if (id.startsWith("rr") || id.startsWith("sr")){
         // A restaurant was selected
         addRecentRestaurant(data);
-        openRestaurant(data);
+        selectedRestaurant = data; // REMOVE THIS LATER
+        selectOrderType();  // MOVE THIS TO OPENRESTAURANT CONDITIONAL XXX
     } else if (id.startsWith("cg")){
         openCategory(data);
     } else if (id.startsWith("fd")){
@@ -48,8 +55,14 @@ function clickHandler(e){
     }
 }
 
+function selectOrderType(){
+    $("#select-order-start").show();
+}
+
 function openQRScreenNow(){
     $("#view-QR-code").show();
+    $("#view-QR-code").show();
+    $("#submit-order").hide();
     $("#payment-warning").html("Your order has been placed!<br><br>Scan this QR code at the cashier to pick up your order.");
 }
 
