@@ -3,6 +3,13 @@ function Order(){
     this.favourite = false;
 }
 
+Order.prototype.getCopy = function(){
+    var newOrder = new Order();
+    for (i in this.food){
+        newOrder.addFood(this.food[i].getCopy());
+    }
+}
+
 Order.prototype.getTotalPrice = function(){
     var totalPrice = 0;
     for (i in this.food){
@@ -30,6 +37,7 @@ Order.prototype.toggleFavourite = function(){
 
 Order.prototype.equals = function(order){
     for (food in this.food){
+        var food = this.food[food];
         var found = false;
         for (other in order.food){
             var other = order.food[other];

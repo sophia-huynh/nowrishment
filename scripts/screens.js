@@ -29,16 +29,30 @@ function clickHandler(e){
             openPaymentScreen();
             return;
         case "order-type-now":
+            selectedRestaurant.addOrder(user.order);
             openQRScreenNow();
             return;
         case "order-type-later":
+            selectedRestaurant.addOrder(user.order);
             openQRScreenLater();
             return;
         case "select-old-order":
+            /* TODO Implement this: It should list selectedRestaurant's orders
+             * -- if one is clicked, user.order gets a copy of that order.
+             * (Order.getCopy()) and then move to the menu screen.
+             * Remember to updateOrder()! */
             selectOldOrder();
             return;
         case "select-new-order":
             openRestaurant(selectedRestaurant);
+            return;
+        case "footer-back":
+            // Goes back one step
+            backButton();
+            return;
+        case "footer-menu":
+            // Returns you to the start of the app (as if it's a new order)
+            restart();
             return;
     }
 
@@ -46,13 +60,63 @@ function clickHandler(e){
     if (id.startsWith("rr") || id.startsWith("sr")){
         // A restaurant was selected
         addRecentRestaurant(data);
-        selectedRestaurant = data; // REMOVE THIS LATER
-        selectOrderType();  // MOVE THIS TO OPENRESTAURANT CONDITIONAL XXX
+        openRestaurant(data);
     } else if (id.startsWith("cg")){
         openCategory(data);
     } else if (id.startsWith("fd")){
         openCustomization(data);
     }
+}
+
+function backButton(){
+    // If the order thing is up: Back should hide it
+    if (orderVisible){
+        toggleCart();
+    } else {
+        // Hide the topmost screen
+        /* XXX UPDATE THIS IF NEW SCREENS ARE ADDED */
+        if ($("#view-QR-code").css('display') != 'none'){
+            $("#view-QR-code").hide();
+            $("#submit-order").show();
+        }
+        else if ($("#view-order-type").css('display') != 'none'){
+            $("#view-order-type").hide();
+        }
+        else if ($("#restaurant-food-screen").css('display') != 'none'){
+            $("#restaurant-food-screen").hide();
+        }
+        else if ($("#restaurant-category-food").css('display') != 'none'){
+            /* XXX If users try to hit BACK after adding an order, they will be
+             * brought out of the restaurant since I don't save their previous
+             * order :( We could always find the last item in the order,
+             * add the customizations and whatever to the screen,
+             * remove it from the order and open up restaurant-food-screen
+             * but I don't want to write that right now. */
+            $("#restaurant-category-food").hide();
+        }
+        else if ($("#restaurant-category-menu").css('display') != 'none'){
+            $("#navbar-cart").hide();
+            $("#order-amount").hide();
+            $("#restaurant-category-menu").hide();
+        }
+        else if ($("#select-order-start").css('display') != 'none'){
+            $("#select-order-start").hide();
+        }
+        else if ($("#restaurant-search-results").css('display') != 'none'){
+            $("#restaurant-search-results").hide();
+        }
+    }
+}
+
+function restart(){
+    if (orderVisible){
+        toggleCart();
+    }
+    $(".screen").hide();
+    $("#navbar-cart").hide();
+    $("#order-amount").hide();
+    $("#main-menu").show();
+    $("#view-order-screen").show();
 }
 
 function selectOrderType(){
@@ -97,9 +161,11 @@ function openSearchResults(string){
 
 function openRestaurant(restaurant){
     selectedRestaurant = restaurant;
+    user.order = new Order();
+    updateOrder();
     
     if (restaurant.orders.length > 0){
-        // There are past orders: openOrderDecision()
+        selectOrderType();
     } else {
         // No old orders exist, so open the menu screen
         openCategories();

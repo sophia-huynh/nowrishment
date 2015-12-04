@@ -15,6 +15,17 @@ Customization.prototype.makeCopy = function(){
     return copy;
 }
 
+Customization.prototype.makeFullCopy = function(){
+    copy = new Customization();
+    for (choice in this.choices){
+        var choice = this.choices[choice];
+        var cp = choice.makeCopy()
+        cp.value = choice.value;
+        copy.addChoice(cp);        
+    }
+    return copy;
+}
+
 // Takes in a list of choices, returns the total price
 Customization.prototype.getPrice = function(){
     var total = 0;

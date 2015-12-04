@@ -6,6 +6,12 @@ function Food(id, name, icon, cost){
     this.customization = null;
 }
 
+Food.prototype.getCopy = function(){
+    var newFood = new Food(this.id, this.name, this.cost);
+    newFood.customization = this.customization.makeFullCopy();
+    return newFood;
+}
+
 Food.prototype.setCustomization = function(customization){
     this.customization = customization;
 }
@@ -60,6 +66,7 @@ Food.prototype.generateOrderListing = function(){
 }
 
 Food.prototype.generateCustomizations = function(){
+    $("#restaurant-food-customization").empty();
     if (!edit){
         this.customization = this.customization.makeCopy();
     }
