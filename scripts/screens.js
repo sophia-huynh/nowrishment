@@ -24,6 +24,7 @@ function clickHandler(e){
             return;
         case "add-order":
             addToOrder(createdFood);
+            updateCustomization = false;
             return;
         case "submit-order":
             openPaymentScreen();
@@ -65,7 +66,12 @@ function clickHandler(e){
         openCategory(data);
     } else if (id.startsWith("fd")){
         openCustomization(data);
+    } else if (id.startsWith("fr")){
+        toggleCart();
+        updateCustomization = true;
+        openCustomization(data);
     }
+
 }
 
 function backButton(){
@@ -189,7 +195,7 @@ function openCategory(category){
 }
 
 function openCustomization(food){
-    createdFood = food;
+    createdFood = food
     $("#restaurant-food-customizations").empty();
     $("#restaurant-food-screen").show();
     createdFood.generateCustomizations();

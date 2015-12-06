@@ -3,3 +3,5 @@ var BOOLEAN = "yn";
 var COMBO = "combo";
 var ratioHeight = 16;
 var ratioWidth = 10;
+
+var updateCustomization = false;

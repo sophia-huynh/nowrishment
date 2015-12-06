@@ -60,7 +60,9 @@ Order.prototype.updateOrderDetails = function(){
 }
 
 function addToOrder(food){
-    user.order.addFood(food);
+    if (!updateCustomization) {
+        user.order.addFood(food);
+    }
     $("#restaurant-food-screen").hide();
     $("#restaurant-food-customization").empty();
     $("#restaurant-category-food").hide();
