@@ -195,7 +195,7 @@ function openCategory(category){
 }
 
 function openCustomization(food){
-    createdFood = food
+    createdFood = food;
     $("#restaurant-food-customizations").empty();
     $("#restaurant-food-screen").show();
     createdFood.generateCustomizations();

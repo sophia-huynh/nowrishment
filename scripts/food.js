@@ -54,7 +54,7 @@ Food.prototype.generateListing = function(){
 
 Food.prototype.generateOrderListing = function(){
     var listing = "<div class='food-order-listing clickable' id='fr" + this.id + "'>\
-                        <div class='food-order-item clickable'>" + this.name + "</div>\
+                        <div class='food-order-item'>" + this.name + "</div>\
                         <div class='food-order-cost'>$" + this.getPrice().toFixed(2) + "</div>\
                     ";
     if (this.customization)
